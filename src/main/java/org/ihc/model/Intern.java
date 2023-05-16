@@ -63,7 +63,7 @@ public class Intern {
         return Collections.emptyList();
     }
 
-    public void setStudentIds(List<String> skills) {
+    public void setSkills(List<String> skills) {
         if (skills != null) {
             this.skills = String.join("," , skills);
         }

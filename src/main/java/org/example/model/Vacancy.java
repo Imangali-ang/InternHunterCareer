@@ -2,12 +2,10 @@ package org.example.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.example.model.enums.City;
 import org.example.model.enums.Speciality;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigInteger;
 
 @Getter @Setter
@@ -27,13 +25,19 @@ public class Vacancy {
 
     private String offers;
 
+    private City city;
+
     private Speciality speciality;
 
     private Long companyId;
 
     private String internIds;
 
-    private enum VacancyType{
+    @Enumerated(EnumType.STRING)
+    @Column(name = "vacancy_type")
+    private VacancyType vacancyType;
+
+    public enum VacancyType{
         ONLINE ,
         OFFLINE;
     }

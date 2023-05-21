@@ -7,6 +7,7 @@ public enum City {
     KARAGANDA,
     AKTOBE,
     ATYRAU,
-    AKTAU
+    AKTAU,
+    INTERNATIONAL
 }
 

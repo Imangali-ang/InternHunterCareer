@@ -1,8 +1,9 @@
 package org.example.controller;
 
+import org.example.model.Dto.RegistrationRequestCompany;
+import org.example.model.Dto.RegistrationRequestIntern;
 import org.example.model.JwtResponse;
 import org.example.model.Dto.LoginRequest;
-import org.example.model.Dto.RegistrationRequest;
 import org.example.model.User;
 import org.example.security.CustomUserDetails;
 import org.example.security.CustomUserDetailsService;
@@ -41,12 +42,17 @@ public class JwtAuthenticationController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestBody RegistrationRequest registrationRequest) {
-        User newUser = userService.registerUser(registrationRequest);
+    @PostMapping("/register/intern")
+    public ResponseEntity<?> registerIntern(@RequestBody RegistrationRequestIntern registrationRequest) {
+        User newUser = userService.registerIntern(registrationRequest);
         return ResponseEntity.ok(newUser);
     }
 
+    @PostMapping("/register/company")
+    public ResponseEntity<?> registerCompany(@RequestBody RegistrationRequestCompany registrationRequest) {
+        User newUser = userService.registerCompany(registrationRequest);
+        return ResponseEntity.ok(newUser);
+    }
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {

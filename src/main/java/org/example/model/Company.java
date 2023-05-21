@@ -1,12 +1,11 @@
 package org.example.model;
 
+import com.sun.istack.NotNull;
+import org.example.model.Dto.RegistrationRequestCompany;
 import org.example.model.enums.City;
 import org.example.model.enums.Speciality;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "company")
@@ -15,12 +14,34 @@ public class Company {
     @Id
     @GeneratedValue
     private Long id;
+    @NotNull
     private String name;
+
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "city")
     private City city;
+
+    @NotNull
     private String address;
     private String contacts;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "speciality")
     private Speciality speciality;
     private String description;
+
+    public Company(RegistrationRequestCompany registrationRequest) {
+        this.name = registrationRequest.getFullName();
+        this.address = registrationRequest.getAddress();
+        this.contacts = registrationRequest.getUserNumber();
+        this.city = registrationRequest.getCity();
+        this.speciality = registrationRequest.getSpeciality();
+        this.description = registrationRequest.getDescription();
+    }
+
+    public Company() {
+
+    }
 
     public void setId(Long id) {
         this.id = id;

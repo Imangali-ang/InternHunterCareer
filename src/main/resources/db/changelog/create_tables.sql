@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS intern (
     id BIGINT PRIMARY KEY,
-    fullName VARCHAR(255),
+    full_name VARCHAR(255),
     age INT,
     place VARCHAR(255),
     degree VARCHAR(255),
@@ -9,11 +9,9 @@ CREATE TABLE IF NOT EXISTS intern (
     speciality VARCHAR(255),
     description TEXT,
     skills TEXT,
-    sex VARCHAR(255),
+    gender VARCHAR(255),
     GPA DOUBLE PRECISION
 );
-
-CREATE TYPE vacancytype AS ENUM ('ONLINE', 'OFFLINE') ON CONFLICT DO NOTHING;
 
 CREATE TABLE IF NOT EXISTS vacancy (
     id BIGINT PRIMARY KEY,
@@ -24,7 +22,7 @@ CREATE TABLE IF NOT EXISTS vacancy (
     speciality VARCHAR(255),
     companyId BIGINT,
     internIds TEXT,
-    type vacancytype
+    type VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS company (

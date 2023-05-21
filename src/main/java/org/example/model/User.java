@@ -2,7 +2,8 @@ package org.example.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.example.model.Dto.RegistrationRequest;
+import org.example.model.Dto.RegistrationRequestCompany;
+import org.example.model.Dto.RegistrationRequestIntern;
 
 import javax.persistence.*;
 
@@ -17,20 +18,22 @@ public class User {
 
     private String userNumber;
 
-    @Column(nullable = false)
-    private String firstname;
-
-    @Column(nullable = false)
-    private String lastname;
+    private String fullName;
 
     @Column(nullable = false)
     private String password;
 
 
-    public User(RegistrationRequest registrationRequest) {
+    public User(RegistrationRequestIntern registrationRequest) {
         this.userNumber = registrationRequest.getUserNumber();
-        this.firstname = registrationRequest.getFirstName();
-        this.lastname = registrationRequest.getLastName();
+        this.fullName = registrationRequest.getFullName();
+        this.password = registrationRequest.getPassword();
+        this.userRole = UserRole.valueOf(registrationRequest.getRole().toUpperCase());
+    }
+
+    public User(RegistrationRequestCompany registrationRequest) {
+        this.userNumber = registrationRequest.getUserNumber();
+        this.fullName = registrationRequest.getFullName();
         this.password = registrationRequest.getPassword();
         this.userRole = UserRole.valueOf(registrationRequest.getRole().toUpperCase());
     }

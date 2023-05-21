@@ -1,5 +1,6 @@
 package org.example.model;
 
+import org.example.model.Dto.RegistrationRequestIntern;
 import org.example.model.enums.City;
 import org.example.model.enums.Speciality;
 import org.springframework.util.StringUtils;
@@ -27,16 +28,35 @@ public class Intern {
     @Column(name = "city")
     private City city;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "speciality")
     private Speciality speciality;
     private String description;
     private String skills;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "sex")
-    private Sex sex;
+    @Column(name = "gender")
+    private Gender gender;
 
     private double GPA;
 
+    public Intern(RegistrationRequestIntern registrationRequest) {
+        this.fullName = registrationRequest.getFullName();
+        this.age = registrationRequest.getAge();
+        this.place = registrationRequest.getPlace();
+        this.degree = registrationRequest.getDegree();
+        this.contacts = registrationRequest.getUserNumber();
+        this.city = registrationRequest.getCity();
+        this.speciality = registrationRequest.getSpeciality();
+        this.description = registrationRequest.getDescription();
+        this.setSkills(registrationRequest.getSkills());
+        this.gender = registrationRequest.getGender();
+        this.GPA = registrationRequest.getGPA();
+    }
+
+    public Intern() {
+
+    }
 
     public void setId(Long id) {
         this.id = id;
@@ -51,7 +71,7 @@ public class Intern {
         MASTER
     }
 
-    public enum Sex{
+    public enum Gender {
         MAN ,
         WOMAN
     }
@@ -133,12 +153,12 @@ public class Intern {
         this.description = description;
     }
 
-    public Sex getSex() {
-        return sex;
+    public Gender getSex() {
+        return gender;
     }
 
-    public void setSex(Sex sex) {
-        this.sex = sex;
+    public void setSex(Gender gender) {
+        this.gender = gender;
     }
 
     public double getGPA() {

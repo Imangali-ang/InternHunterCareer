@@ -26,6 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 @RestController
 @RequestMapping("/api/auth")
 public class JwtAuthenticationController {

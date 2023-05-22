@@ -72,7 +72,7 @@ public class JwtAuthenticationController {
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(new JwtResponse(jwt,
-                userDetails.getUserNumber(),
+                userDetails.getId(),
                 userDetails.getUsername(),
                 roles));
     }

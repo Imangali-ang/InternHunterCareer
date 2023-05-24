@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.example.model.Vacancy;
 import org.example.model.enums.City;
+import org.example.model.enums.Speciality;
 
 import java.math.BigDecimal;
 
@@ -34,5 +35,7 @@ public class VacancyDto {
     private String contacts;
 
     private Long vacancyId;
+
+    private Speciality speciality;
 
 }

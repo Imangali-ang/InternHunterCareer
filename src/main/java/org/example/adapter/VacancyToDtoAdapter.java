@@ -18,7 +18,7 @@ public class VacancyToDtoAdapter {
 
     public VacancyDto convert(Vacancy vacancy){
         VacancyDto vacancyDto = new VacancyDto();
-        vacancyDto.setNumberOfResponse(Optional.ofNullable(vacancy.getInternIds()).orElse("").length());
+        vacancyDto.setNumberOfResponse(vacancy.getInternIds().size());
         vacancyDto.setName(vacancy.getName());
         vacancyDto.setSalary(vacancy.getSalary());
         Company company = companyRepository.findById(vacancy.getCompanyId())

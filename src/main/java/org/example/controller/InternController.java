@@ -23,7 +23,6 @@ public class InternController {
 
     @Autowired
     private UserRepository userRepository;
-
     @Autowired
     private VacancyService vacancyService;
 
@@ -50,4 +49,18 @@ public class InternController {
         return vacancyService.getVacancies(vacancyFilter);
     }
 
+    @GetMapping("/{internId}/vacancies/{vacancyId}")
+    public VacancyDto getVacancies(
+            @PathVariable("vacancyId") Long vacancyId
+    ) {
+        return vacancyService.getVacancy(vacancyId);
+    }
+
+    @PutMapping("/{internId}/vacancies/{vacancyId}")
+    public VacancyDto takeVacancy(
+            @PathVariable("vacancyId") Long vacancyId,
+            @PathVariable("internId") Long id
+    ){
+        return vacancyService.takeVacancy(vacancyId , id);
+    }
 }

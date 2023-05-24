@@ -11,4 +11,8 @@ public interface VacancyService {
     VacancyDto create(Vacancy vacancy);
 
     List<VacancyDto> getVacancies(VacancyFilter vacancyFilter);
+
+    VacancyDto getVacancy(Long vacancyId);
+
+    VacancyDto takeVacancy(Long vacancyId , Long id);
 }

@@ -54,4 +54,26 @@ public class VacancyServiceImpl implements VacancyService {
         return vacancyDtos;
     }
 
+    @Override
+    public VacancyDto getVacancy(Long vacancyId) {
+        Vacancy vacancy = vacancyRepository.findById(vacancyId)
+                .orElseThrow(() -> new BasicException("NOT FIND VACANCY"));
+        return vacancyToDtoAdapter.convert(vacancy);
+    }
+
+    @Override
+    @Transactional
+    public VacancyDto takeVacancy(Long vacancyId, Long id) {
+        Vacancy vacancy = vacancyRepository.findById(vacancyId)
+                .orElseThrow(() -> new BasicException("NOT FIND VACANCY"));
+        List<String> ids = vacancy.getInternIds();
+        if(ids.contains(""+id)){
+            throw new BasicException("ALREADY TAKEN VACANCY");
+        }
+        ids.add(""+id);
+        vacancy.setInternIds(ids);
+        vacancyRepository.save(vacancy);
+        return vacancyToDtoAdapter.convert(vacancy);
+    }
+
 }

@@ -63,4 +63,19 @@ public class InternController {
     ){
         return vacancyService.takeVacancy(vacancyId , id);
     }
+
+    @GetMapping("/{internId}/vacancies/taken")
+    public List<VacancyDto> takenVacancies(
+            @PathVariable("internId") Long id
+    ) {
+        return vacancyService.getTakenVacancy(id);
+    }
+
+    @DeleteMapping("/{internId}/vacancies/{vacancyId}")
+    public void underTakeVacancies(
+            @PathVariable("vacancyId") Long vacancyId,
+            @PathVariable("internId") Long id
+    ) {
+        vacancyService.getUnderTakenVacancy(vacancyId , id);
+    }
 }

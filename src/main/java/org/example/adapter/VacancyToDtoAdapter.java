@@ -18,6 +18,7 @@ public class VacancyToDtoAdapter {
 
     public VacancyDto convert(Vacancy vacancy){
         VacancyDto vacancyDto = new VacancyDto();
+        vacancyDto.setVacancyId(vacancy.getId());
         vacancyDto.setNumberOfResponse(vacancy.getInternIds().size());
         vacancyDto.setName(vacancy.getName());
         vacancyDto.setSalary(vacancy.getSalary());

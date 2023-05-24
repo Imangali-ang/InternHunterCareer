@@ -15,4 +15,8 @@ public interface VacancyService {
     VacancyDto getVacancy(Long vacancyId);
 
     VacancyDto takeVacancy(Long vacancyId , Long id);
+
+    List<VacancyDto> getTakenVacancy(Long id);
+
+    void getUnderTakenVacancy(Long vacancyId , Long id);
 }

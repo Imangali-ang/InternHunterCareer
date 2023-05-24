@@ -76,4 +76,24 @@ public class VacancyServiceImpl implements VacancyService {
         return vacancyToDtoAdapter.convert(vacancy);
     }
 
+    @Override
+    public List<VacancyDto> getTakenVacancy(Long id) {
+        List<Vacancy> vacancies = vacancyRepository.findByInternId(""+id);
+        return  vacancies.stream().map(vacancyToDtoAdapter::convert).toList();
+    }
+
+    @Override
+    @Transactional
+    public void getUnderTakenVacancy(Long vacancyId , Long id) {
+        Vacancy vacancy = vacancyRepository.findById(vacancyId)
+                .orElseThrow(() -> new BasicException("NOT FIND VACANCY"));
+        if(!vacancy.getInternIds().contains(""+id)){
+            throw new BasicException("INTERN DOESN'T HAVE VACANCY");
+        }
+        List<String> ids = vacancy.getInternIds();
+        ids.remove(""+id);
+        vacancy.setInternIds(ids);
+        vacancyRepository.save(vacancy);
+    }
+
 }

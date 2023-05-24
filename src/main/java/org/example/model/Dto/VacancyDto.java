@@ -33,4 +33,6 @@ public class VacancyDto {
 
     private String contacts;
 
+    private Long vacancyId;
+
 }

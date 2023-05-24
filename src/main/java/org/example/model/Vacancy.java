@@ -26,14 +26,18 @@ public class Vacancy {
 
     private String offers;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "city")
     private City city;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "speciality")
     private Speciality speciality;
 
+    @Column(name = "company_id")
     private Long companyId;
 
+    @Column(name = "intern_ids")
     private String internIds;
 
     @Enumerated(EnumType.STRING)

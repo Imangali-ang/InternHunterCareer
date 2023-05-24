@@ -10,6 +10,7 @@ import org.example.repository.CompanyRepository;
 import org.example.repository.UserRepository;
 import org.example.service.VacancyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

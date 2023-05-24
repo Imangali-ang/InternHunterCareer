@@ -19,10 +19,11 @@ CREATE TABLE IF NOT EXISTS vacancy (
     salary NUMERIC(20),
     requirements TEXT,
     offers TEXT,
+    city VARCHAR(255),
     speciality VARCHAR(255),
-    companyId BIGINT,
-    internIds TEXT,
-    type VARCHAR(255)
+    company_id BIGINT,
+    intern_ids TEXT,
+    vacancy_type VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS company (

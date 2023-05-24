@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="org.example.mapper.VacancyMapper">
+
+    <select id="getList" resultType="org.example.model.Vacancy">
+        SELECT id,
+        name,
+        salary,
+        requirements,
+        offers,
+        city,
+        speciality,
+        company_id as companyId,
+        intern_ids as internIds,
+        vacancy_type as vacancyType
+        FROM Vacancy
+        WHERE 1 = 1
+        <if test="name != null and name != ''">
+            AND name LIKE '%' || #{name} || '%'
+        </if>
+        <if test="speciality != null and speciality != ''">
+            AND speciality = #{speciality}
+        </if>
+        <if test="city != null and city != ''">
+            AND city = #{city}
+        </if>
+    </select>
+
+    <select id="countList" resultType="long">
+        SELECT COUNT(*)
+        FROM Vacancy
+        WHERE 1 = 1
+        <if test="name != null and name != ''">
+            AND name LIKE '%' || #{name} || '%'
+        </if>
+        <if test="speciality != null and speciality != ''">
+            AND speciality = #{speciality}
+        </if>
+        <if test="city != null and city != ''">
+            AND city = #{city}
+        </if>
+    </select>
+
+</mapper>

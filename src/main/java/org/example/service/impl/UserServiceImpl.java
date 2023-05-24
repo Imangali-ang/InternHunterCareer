@@ -41,8 +41,10 @@ public class UserServiceImpl implements UserService {
             User newUser = new User(registrationRequest);
             newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
             Intern intern = new Intern(registrationRequest);
+            User user = userRepository.save(newUser);
+            intern.setId(user.getId());
             internRepository.save(intern);
-            return userRepository.save(newUser);
+            return user;
         }
         else {
             throw new BasicException("NUMBER ALREADY EXISTS");
@@ -60,8 +62,10 @@ public class UserServiceImpl implements UserService {
             User newUser = new User(registrationRequest);
             newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
             Company company = new Company(registrationRequest);
+            User user = userRepository.save(newUser);
+            company.setId(user.getId());
             companyRepository.save(company);
-            return userRepository.save(newUser);
+            return user;
         }
         else {
             throw new BasicException("NUMBER ALREADY EXISTS");

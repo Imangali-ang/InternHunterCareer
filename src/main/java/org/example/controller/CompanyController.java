@@ -39,4 +39,6 @@ public class CompanyController {
     public VacancyDto create(@RequestBody Vacancy vacancy){
         return vacancyService.create(vacancy);
     }
+
+
 }

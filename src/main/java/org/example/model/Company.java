@@ -12,7 +12,6 @@ import javax.persistence.*;
 public class Company {
 
     @Id
-    @GeneratedValue
     private Long id;
     @NotNull
     private String name;

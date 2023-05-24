@@ -15,7 +15,6 @@ import java.util.stream.Collectors;
 @Table(name = "intern")
 public class Intern {
     @Id
-    @GeneratedValue
     private Long id;
     private String fullName;
     private int age;

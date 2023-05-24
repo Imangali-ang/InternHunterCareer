@@ -2,6 +2,7 @@ package org.example.controller;
 
 import org.example.Exceptions.models.BasicException;
 import org.example.model.Company;
+import org.example.model.Dto.VacancyDto;
 import org.example.model.Intern;
 import org.example.model.User;
 import org.example.model.Vacancy;
@@ -34,7 +35,7 @@ public class CompanyController {
     }
 
     @PostMapping("/{companyId}/vacancy")
-    public Vacancy create(@RequestBody Vacancy vacancy){
+    public VacancyDto create(@RequestBody Vacancy vacancy){
         return vacancyService.create(vacancy);
     }
 }

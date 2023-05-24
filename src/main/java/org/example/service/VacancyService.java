@@ -1,8 +1,9 @@
 package org.example.service;
 
+import org.example.model.Dto.VacancyDto;
 import org.example.model.Vacancy;
 
 public interface VacancyService {
 
-    Vacancy create(Vacancy vacancy);
+    VacancyDto create(Vacancy vacancy);
 }

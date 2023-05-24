@@ -6,6 +6,7 @@ import org.example.model.enums.City;
 import org.example.model.enums.Speciality;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 @Getter @Setter
@@ -19,7 +20,7 @@ public class Vacancy {
 
     private String name;
 
-    private BigInteger salary;
+    private BigDecimal salary;
 
     private String requirements;
 
@@ -27,6 +28,8 @@ public class Vacancy {
 
     private City city;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "speciality")
     private Speciality speciality;
 
     private Long companyId;

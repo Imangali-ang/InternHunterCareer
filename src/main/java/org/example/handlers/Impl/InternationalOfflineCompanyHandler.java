@@ -4,24 +4,22 @@ import org.example.handlers.CompanyHandler;
 import org.example.model.Vacancy;
 import org.example.model.enums.Speciality;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
-@Service
-public class OnlineCompanyHandler implements CompanyHandler {
+public class InternationalOfflineCompanyHandler implements CompanyHandler {
 
-    @Value("${vacancy.offers.online.kz}")
+    @Value("${vacancy.offers.international.offline}")
     private String offers;
 
-    @Value("${vacancy.salary.online.kz}")
+    @Value("${vacancy.salary.international.offline}")
     private String minSalary;
 
     @Override
     public void fillVacancy(Vacancy vacancy) {
-        vacancy.setOffers(offers.replace("\n" , "\r\n"));
+        vacancy.setOffers(offers);
     }
 
     @Override
@@ -34,7 +32,7 @@ public class OnlineCompanyHandler implements CompanyHandler {
 
     @Override
     public boolean checkSpeciality(Speciality speciality) {
-        Set<Speciality> specialitySet = new HashSet<>(Set.of(Speciality.PROGRAMMER , Speciality.LAWYER , Speciality.MANAGER , Speciality.TEACHER));
+        Set<Speciality> specialitySet = new HashSet<>(Set.of(Speciality.PROGRAMMER , Speciality.DOCTOR, Speciality.MANAGER , Speciality.TEACHER));
         if(!specialitySet.contains(speciality)){
             return true;
         }

@@ -15,6 +15,6 @@ public interface VacancyRepository extends JpaRepository<Vacancy, Long> {
     @Query("SELECT v FROM Vacancy v WHERE v.internIds LIKE CONCAT('%', TRIM(:id), '%')")
     List<Vacancy> findByInternId(@Param("id") String id);
 
-    @Query("SELECT v FROM Vacancy v WHERE v.companyId =: id")
+    @Query("SELECT v FROM Vacancy v WHERE v.companyId = :id")
     List<Vacancy> findByCompanyId(@Param("id") Long id);
 }
